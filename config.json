@@ -1,0 +1,9 @@
+{
+  "ai_threshold_percent": 5,
+  "commission_percent": 1.5,
+  "min_stake_water": 100,
+  "clicker_cooldown_sec": 30,
+  "solana_rpc": "https://api.mainnet-beta.solana.com",
+  "admin_users": [123456789],
+  "referral_bonus_percent": 3
+}
