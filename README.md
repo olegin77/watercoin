@@ -1,33 +1,33 @@
-# Watercoin2 Full AI Bot (Solana + Telegram)
 
-## Установка
-```bash
-sudo apt install redis
-pip install -r requirements.txt
-export TG_BOT_TOKEN=your_token
-python3 bot/main.py
-```
+# 🌊 Watercoin2 Project (Full Release)
 
-## Backend (AI Engine)
-```bash
-uvicorn backend.app:app --reload --port 8000
-```
+## Состав проекта:
+- `/bot/` — Telegram бот (aiogram, Redis)
+- `/backend/` — FastAPI API, admin tools
+- `/webapp/` — Telegram Mini App (React)
+- `.env.example` — пример конфигурации
+- `requirements.txt` — зависимости Python
 
-## AI Тест
-```bash
-curl http://localhost:8000/ai
-```
+## Запуск:
+1. Установите зависимости:
+   ```
+   pip install -r requirements.txt
+   ```
+2. Запустите backend:
+   ```
+   cd backend
+   uvicorn app:app --reload
+   ```
+3. Запустите бота:
+   ```
+   cd bot
+   python3 main.py
+   ```
+4. Разверните WebApp (папка webapp/) на Vercel или Netlify
 
-## В боте:
-- /start
-- 🔗 Привязка кошелька
-- 💧 Стейкинг (1000 $WATER)
-- 📈 AI Стратегия
-- 💰 Вывод в USDT
-- 📊 История + мем-награды
-
-## База: Redis
-- stake:{uid}
-- income:{uid}
-- wallet:{uid}
-- strategy:{uid}
+## Переменные окружения:
+- TG_BOT_TOKEN
+- SENDER_SECRET
+- WATER_MINT
+- USDT_MINT
+- WEBAPP_URL
