@@ -1,35 +1,33 @@
-# Watercoin2 — AI Meme Yield Bot
+# Watercoin2 Full AI Bot (Solana + Telegram)
 
-## 📦 Установка
+## Установка
 ```bash
-git clone https://github.com/yourorg/watercoin2-bot
-cd watercoin2-bot
+sudo apt install redis
 pip install -r requirements.txt
-export TG_BOT_TOKEN=your_bot_token
+export TG_BOT_TOKEN=your_token
+python3 bot/main.py
 ```
 
-## 🚀 Запуск Telegram-бота
-```bash
-python bot/main.py
-```
-
-## 🧠 Запуск AI Backend
+## Backend (AI Engine)
 ```bash
 uvicorn backend.app:app --reload --port 8000
 ```
 
-## 🌐 Открытие админки (mock)
-Откройте файл `admin/templates/index.html` в браузере.
+## AI Тест
+```bash
+curl http://localhost:8000/ai
+```
 
-## ⚙️ Конфигурация
-Все параметры в `config.json`:
-- Порог AI (%), комиссия, минимальный стейк
-- RPC Solana, список админов
+## В боте:
+- /start
+- 🔗 Привязка кошелька
+- 💧 Стейкинг (1000 $WATER)
+- 📈 AI Стратегия
+- 💰 Вывод в USDT
+- 📊 История + мем-награды
 
-## 🪙 Поддержка токенов
-- Токен: $WATER (SPL)
-- Интеграция через RPC
-- Депозиты, стейкинг, вывод, реф. система
-
-## ✅ Завершение
-Этот проект предоставляет полностью готовую архитектуру для запуска Telegram-бота с AI ребалансировкой, мем-элементами и доходной моделью.
+## База: Redis
+- stake:{uid}
+- income:{uid}
+- wallet:{uid}
+- strategy:{uid}

@@ -1,13 +1,16 @@
 from fastapi import FastAPI
-from backend.services.price_fetcher import MockPriceFetcher
-from backend.ai_engine.strategy import AIRebalanceStrategy
+import redis
+from datetime import datetime
+import random
 
+r = redis.Redis(host="localhost", port=6379, db=0, decode_responses=True)
 app = FastAPI()
 
-@app.get("/rebalance-decision")
-def get_rebalance_decision():
-    fetcher = MockPriceFetcher()
-    history = fetcher.get_price_history()
-    strategy = AIRebalanceStrategy(fetcher)
-    decision = strategy.decide(history)
-    return {"decision": decision, "history": history[-3:]}
+@app.get("/ai")
+def ai_rebalance():
+    for key in r.scan_iter("stake:*"):
+        uid = key.split(":")[1]
+        stake = int(r.get(key) or 0)
+        change = round(stake * (random.uniform(-0.03, 0.05)), 2)
+        r.incrbyfloat(f"income:{uid}", change)
+    return {"status": "updated"}
